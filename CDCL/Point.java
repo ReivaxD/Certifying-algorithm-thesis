@@ -1,19 +1,24 @@
 package CDCL;
 
 class Point {
-    double x, y;
+    double number;
+    boolean value;
 
-    public Point(double x, double y) {
-        this.x = x;
-        this.y = y;
+    public Point(double number, boolean value) {
+        this.number = number;
+        this.value = value;
     }
 
-    public Vector to(Point other) {
-        return new Vector(new Point(x, y), other);
+    public Vecteur to(Point other) {
+        return new Vecteur(new Point(number, value), other);
+    }
+
+    public boolean equals(Point p){
+        return ((p.number == this.number) && (p.value == this.value));
     }
 
     @Override
     public String toString() {
-        return "(" + x + ", " + y + ")";
+        return "Number : " + number + ", Value : " + value;
     }
 }

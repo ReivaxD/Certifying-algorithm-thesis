@@ -1,16 +1,15 @@
 package CDCL;
-class Vector {
+
+class Vecteur {
     Point p1, p2;
 
-    public Vector(Point p1, Point p2) {
+    public Vecteur(Point p1, Point p2) {
         this.p1 = p1;
         this.p2 = p2;
     }
 
-    public double length() {
-        double l = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
-        System.out.println();
-        return l;
+    public boolean equals(Vecteur v){
+        return (v.p1.equals(this.p1)) && (v.p2.equals(this.p2)) || (v.p1.equals(this.p2)) && (v.p2.equals(this.p1));
     }
 
     @Override
