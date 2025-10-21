@@ -25,5 +25,14 @@ public class CDCL {
 
         Graph g = new Graph(vecteurs, points);
         g.reduce();
+        System.out.println(g);
+        System.out.println("--------------");
+
+        // Exemple :
+        // ( (not A) or (not C) )   and   (B or C)
+        // Une assignation serait : A = false ; B = false ; C = true
+        // 3 var -> 2^3 = 8 possibilités
+
+        
     }
 }

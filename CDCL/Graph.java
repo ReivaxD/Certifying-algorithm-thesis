@@ -55,4 +55,9 @@ public class Graph {
     System.out.println(ip + " point(s) supprimes");
     System.out.println(iv + " vecteur(s) supprimes");
     }
+
+    @Override
+    public String toString() {
+        return "Nombre de points : " + points.size() + ", Nombre de vecteurs : " + vecteurs.size();
+    }
 }

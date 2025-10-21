@@ -1,7 +1,8 @@
 package CDCL;
 public class ImplicationGraph {
     
-    public boolean getIG(int[] vertex, int[] edge){
+    // ( (not A) or (not C) )   and   (B or C)
+    public boolean buildIG(String formule){
         return true;
     }
 }

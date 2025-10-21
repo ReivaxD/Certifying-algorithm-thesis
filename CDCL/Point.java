@@ -19,6 +19,6 @@ class Point {
 
     @Override
     public String toString() {
-        return "Number : " + number + ", Value : " + value;
+        return "numero : " + number + ", Valeur : " + value;
     }
 }
