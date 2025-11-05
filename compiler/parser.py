@@ -2,9 +2,10 @@
 import ply.lex as lex
 import ply.yacc as yacc
 
-tokens = ('NUMBER', 'PLUS')
+tokens = ('OR', 'AND')
 
-t_PLUS = r'\+'
+t_AND = r'\&'
+t_OR = r'\|'
 t_NUMBER = r'\d+'
 t_ignore = ' \t'
 
@@ -14,17 +15,13 @@ def t_error(t):
 
 lexer = lex.lex()
 
-def p_expression_plus(p):
+def p_expression_and(p):
     'expression : expression PLUS term'
     p[0] = p[1] + p[3]
 
-def p_expression_term(p):
-    'expression : term'
-    p[0] = p[1]
-
-def p_term_number(p):
-    'term : NUMBER'
-    p[0] = int(p[1])
+def p_expression_or(p):
+    'expression : expression PLUS term'
+    p[0] = p[1] + p[3]
 
 def p_error(p):
     print("Erreur de syntaxe", p)
