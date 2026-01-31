@@ -13,6 +13,7 @@ class CDCLSolver:
         # Profondeur actuelle
         self.decision_level = 0
 
+    # Retourne la valeur logique de ce littéral avec les assignations actuelles
     def value(self, lit):
         var = abs(lit)
         if var not in self.assignment:
@@ -32,19 +33,27 @@ class CDCLSolver:
                 if all(v is False for v in values):
                     # conflit (Si tous faux)
                     return clause  
+                # Si exactement 1 littéral est non assigné et tout les autres sont Faux
                 if values.count(None) == 1 and all(v is False or v is None for v in values):
                     lit = clause[values.index(None)]
+                    # On assigne cette variable et on réittère la propagation unitaire (car l'assignation peut créer d'autre assignation par implication) 
                     self.assign(lit, clause)
                     changed = True
         return None
 
+    # On assigne une variable
     def assign(self, lit, reason=None):
+        # Quel est le littéral à assigner
         var = abs(lit)
+        # On assigne la variable (exemple : Si elle doit etre fausse, alors toutes les valeurs de la clause impliquée seront fausses et la valeur du littéral est négative (ie. -x1))
         self.assignment[var] = (lit > 0)
+        # On avance dans la profondeur
         self.level[var] = self.decision_level
+        # On ajoute None si on provient de l'assignation par défaut
+        # Sinon, on ajoute la clause responsable de l'assignation 
         self.reason[var] = reason
 
-    # Pour choisir un littéral parmis celles non assignées
+    # Pour choisir un littéral parmis ceux non assignés
     def pick_branching_literal(self):
         for clause in self.clauses:
             for lit in clause:
@@ -56,19 +65,23 @@ class CDCLSolver:
     def analyze_conflict(self, conflict_clause):
         learnt = conflict_clause[:]
         while True:
-            # Crée une clause pour traiter le conflit
+        # Crée une clause pour traiter le conflit
+            # Combien de littéraux de la clause viennent du niveau de décision courant
             current_level_lits = [
                 l for l in learnt
                 if self.level.get(abs(l), -1) == self.decision_level
             ]
+            # La clause est (supposée) assertive (1 seul littéral -> on sait qu'on doit ajouter une clause et faire du backtracking)
             if len(current_level_lits) <= 1:
                 break
 
+            # On remonte au littéral de base pour savoir la cause de la présence 
             lit = current_level_lits[0]
             reason = self.reason.get(abs(lit))
+            # On ne peut pas remonter plus loin
             if reason is None:
                 break
-            # crée une liste avec 
+            # Si aucun des sénarios précédents on combine la clause courante avec la clause reason
             learnt = list(set(learnt + reason) - {lit, -lit})
 
         # Cherche la position pour le backtracking
@@ -76,6 +89,7 @@ class CDCLSolver:
         for lit in learnt:
             lvl = self.level.get(abs(lit), 0)
             if lvl != self.decision_level:
+                # le niveau où la clause apprise deviendra unitaire (la dernière)
                 backjump = max(backjump, lvl)
 
         return learnt, backjump
@@ -85,6 +99,7 @@ class CDCLSolver:
         to_remove = [v for v in self.assignment if self.level[v] > level]
         # Revenir en arrière signifie enlever les étapes parcourues jusqu'à arriver à la profondeur souhaitée
         for v in to_remove:
+            # Raisonnement similaire à la méthode assign() mais avec suppression plutot qu'ajout
             del self.assignment[v]
             del self.level[v]
             del self.reason[v]
