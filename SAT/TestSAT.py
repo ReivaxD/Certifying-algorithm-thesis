@@ -4,7 +4,30 @@ from pysat.solvers import Glucose3
 
 clauseList = [[1, 4], [1, -3, -8], [1, 8, 12], [2, 11], [-7, -3, 9], [-7, 8, -9], [7, 8, -10], [7, 10, -12]]
 
-def CDCL(clauseList, vectorList, edgeList):
+def CDCL(clauseList):
+    
+    solver = Glucose3()
+    for clause in clauseList:
+        solver.add_clause(clause)
+    
+    # Récupère les sommets et arêtes du graphe d'implication de la liste de clauses
+    edge, vector = ImplicationGraph(clauseList)
+
+    # On génère un dictionnaire avec les sommets présents dans ClauseList
+    dictVar = {}
+    for i in edge:
+        dictVar[i] = False
+        dictVar[-i] = False
+
+    while True:
+        # On applique la propagation unitaire
+        dictVar = propagation(dictVar, vector)
+
+        if(True):
+            return True
+
+
+def CDCLTest(clauseList, vectorList, edgeList):
 
     solver = Glucose3()
 
@@ -99,9 +122,8 @@ edge, vector = ImplicationGraph(clauseList)
 #print(edge)
 #print(vector)
 
-CDCL(clauseList, vector, edge)
-
-"""
+#CDCL(clauseList, vector, edge)
+'''
 solver = Glucose3()
 
 for clause in clauseList:
@@ -116,4 +138,4 @@ dictVar[3] = True
 
 print(vector)
 print(propagation(dictVar, vector))
-"""
+'''
