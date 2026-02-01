@@ -82,6 +82,9 @@ class CDCLSolver:
             if reason is None:
                 break
             # Si aucun des sénarios précédents on combine la clause courante avec la clause reason
+            # (learnt + reason) combine l'ensemble des littéraux courants et ceux qui ont causés le conflit (+ supprime les doublons)
+            # - {lit, -lit} retire le littéral concerné et son opposé (On élimine le pivot (= littéral responsable du conflit))
+            # Note importante ici : ligne pas complete (TODO)
             learnt = list(set(learnt + reason) - {lit, -lit})
 
         # Cherche la position pour le backtracking
