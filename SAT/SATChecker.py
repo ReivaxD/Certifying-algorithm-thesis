@@ -44,6 +44,6 @@ clause3 = [[1],[-1, 2],[-2, 3],[-3, 4],[-1, 5],[-5, 6],[-6, 7],[-4, -7]]  # Prob
 modeltrue = {1: True, 4: True, 3: False, 8: False, 12: True, 7: True, 9: False, 2: True, 11: True, 10: False}
 modelFalse = {1: False, 4: True, 3: False, 8: False, 12: False, 7: False, 9: False, 2: False, 11: False, 10: False}
 
-print(resolveSAT(clause3, modelFalse))
+print(resolveSAT(clause2, modelFalse))
 
 # Le résultat de resolvaUNSAT(clause3) est donné dans DRATproof.txt
