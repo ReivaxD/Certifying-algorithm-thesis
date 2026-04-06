@@ -17,8 +17,8 @@ def color2ktoClause(edge, vertex):
     # la condition if élimine les doublons ("deux aretes" existent connectant les sommets A et B : AB et BA)
     # on ajoute les couple qui ne peuvent pas avoir la meme couleur pour une arête AB : [non A1 ou non B1] et [non A2 ou non B2]
     var = clauses
-    for x in range(len(edge)):
-            for y in range(len(edge)):
+    for x in range(vertex):
+            for y in range(vertex):
                  if(edge[x][y] == 1):
                         if [-var[y][0], -var[x][0]] not in clauses:
                             clauses.append([-var[x][0], -var[y][0]])
