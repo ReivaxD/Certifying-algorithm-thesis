@@ -31,7 +31,7 @@ def color2ktoClause(edge, vertex):
 
 # le format : le nombre de sommets
 vertex = 3
-# un tableau R x R contenant un 1 si deux sommets sont connectés (0 sinon)
+# un tableau R x R contenant un 1 si deux sommets sont connectés (0 sinon) (0 sur la diagonale un sommet A est considéré non connecté à lui même pour simplifier le code)
 edge = [[0, 1, 0], [1, 0, 1], [0, 1, 0]]
 
 print(color2ktoClause(edge, vertex))
