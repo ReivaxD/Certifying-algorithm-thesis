@@ -39,9 +39,12 @@ def colorNktoClause(edge, vertex, N):
 
 # le format : le nombre de sommets
 
+# graphe 4-coloriable
 N = 4
 
+# nombre de sommets
 vertex = 5
+
 # un tableau R x R contenant un 1 si deux sommets sont connectés (0 sinon) (0 sur la diagonale un sommet A est considéré non connecté à lui même pour simplifier le code)
 edge = [[1, 1, 1, 0, 1], [1, 1, 0, 0, 0], [1, 0, 1, 0, 0], [0, 0, 0, 1, 1], [1, 0, 0, 1, 1]]
 
