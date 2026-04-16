@@ -5,7 +5,7 @@ def cliquetoClause(edge, vertex, N):
     counter = 1
 
     # On crée un tableau de variables classées par sommet 
-    # (ex : Sommet A à le tableau [1, 2, 3, 4, 5] pour R = 5 et représente les 5 positions que peut avoir le sommet A)
+    # (ex : Sommet A à le tableau [1, 2, 3, 4, 5] pour N = 5 et représente les 5 positions que peut avoir le sommet A)
     for v in range(vertex):
         var = []
         for w in range(N):
@@ -14,7 +14,7 @@ def cliquetoClause(edge, vertex, N):
         varList.append(var)
     
     # On crée un tableau contenant les sommets pour une même position dans vartemp
-    # (ex : Position 1 à le tableau [1, 6, 11, 16, 21] pour R = 5 et représente les 5 sommets que peut avoir la position 1)
+    # (ex : Position 1 à le tableau [1, 6, 11, 16, 21] pour N = 5 et représente les 5 sommets que peut avoir la position 1)
     # Ce tableau correspond à la règle 2 : 
     # Chaque position dans la clique doit être attribuée à un sommet
     vartemp = []
