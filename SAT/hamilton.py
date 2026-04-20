@@ -73,4 +73,4 @@ vertex = 5
 # un tableau R x R contenant un 1 si deux sommets sont connectés (0 sinon) (diagonale pas importante)
 edge = [[1, 1, 1, 0, 1], [1, 1, 1, 0, 0], [1, 1, 1, 1, 1], [0, 0, 1, 1, 1], [1, 0, 1, 1, 1]]
 
-print(hamiltontoClause(edge, vertex))
+# print(hamiltontoClause(edge, vertex))
