@@ -1,5 +1,5 @@
-from SAT.CDCLSolver import CDCLSolver
-from SAT.NkColor import colorNktoClause
+from CertifyingAlgo.CDCLSolver import CDCLSolver
+from CertifyingAlgo.NkColor import colorNktoClause
 
 # graphe 4-coloriable
 N = 4

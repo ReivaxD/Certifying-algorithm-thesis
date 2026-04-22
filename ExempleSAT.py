@@ -1,5 +1,5 @@
-from SAT.SATChecker import resolveSAT
-from SAT.hamilton import hamiltontoClause
+from CertifyingAlgo.SATChecker import resolveSAT
+from CertifyingAlgo.hamilton import hamiltontoClause
 
 print("Est ce que mon assignation de variable est solution du problème du cycle Hamiltonien?")
 

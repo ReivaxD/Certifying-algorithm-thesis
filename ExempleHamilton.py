@@ -1,5 +1,5 @@
-from SAT.CDCLSolver import CDCLSolver
-from SAT.hamilton import hamiltontoClause
+from CertifyingAlgo.CDCLSolver import CDCLSolver
+from CertifyingAlgo.hamilton import hamiltontoClause
 
 # nombre de sommets
 vertex = 5
