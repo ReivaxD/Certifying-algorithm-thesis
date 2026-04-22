@@ -19,6 +19,7 @@ edge = [[1, 1, 1, 0, 0], [1, 1, 1, 0, 0], [1, 1, 1, 1, 1], [0, 0, 1, 1, 1], [0, 
 
 clauses = hamiltontoClause(edge, vertex)
 
+print(clauses)
 nameProof = "dratProof_test"
 
 if resolveUNSAT(clauses, nameProof):
