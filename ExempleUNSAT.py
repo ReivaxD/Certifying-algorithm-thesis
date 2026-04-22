@@ -28,3 +28,5 @@ if resolveSAT(clauses, model):
     print("L'assignation de variable est solution du problème")
 else:
     print("L'assignation de variable n'est pas solution du problème")
+
+# resolveUNSAT(clauses, model)
