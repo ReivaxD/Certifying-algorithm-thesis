@@ -1,5 +1,7 @@
 # Certifying-algorithm-thesis
 
+librairies importantes : glocose3, networkX
+
 Les fichiers expérimentaux implémentant les différentes partie d'un Algorithme Certifiant sont les fichiers commencant par "Exemple" :
 
 - Hamilton, Clique et kColor pour tester la conversion de rgaphe en format SAT.
