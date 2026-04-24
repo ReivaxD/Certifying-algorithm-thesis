@@ -10,14 +10,19 @@ def toEdges(vertex, edges):
         tab[tuple[1]][tuple[0]] = 1
     return tab
 
+# Le code Graph6 du graphe souhaité
 code = "FCXmW"
+
 g = nx.from_graph6_bytes(code.encode())
 
 print(g.nodes(), g.edges())
 
 vertex = g.number_of_nodes()
 edge = toEdges(vertex, g.edges())
+
+# Le N-paramètre pour NkColor ou NClique
 N = 3
+
 clause = colorNktoClause(edge, vertex, N)
 print(clause)
 solver = CDCLSolver(clause)

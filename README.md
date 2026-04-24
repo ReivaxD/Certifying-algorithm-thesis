@@ -22,4 +22,8 @@ Les fichiers présent dans le dossier CertifyingAlgo sont le coeur du code :
 
 ExempleNetworkX utilise un code en format graph6 pour générer un graphe et utilise l'algorithme KColor dessus
 
+- TestOneGraph utilise networkX sur un format Graph6 pour faire fonctionner les algorithmes
+
+- TestGraphes Utilise le même principe de TestOneGraph sur des grandes bases de données de graphes
+
 Les deux fichiers .txt sont des exemple de preuve DRAT fournie par les algorithmes.

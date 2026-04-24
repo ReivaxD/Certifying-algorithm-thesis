@@ -10,17 +10,19 @@ def toEdges(vertex, edges):
         tab[tuple[1]][tuple[0]] = 1
     return tab
 
-
 countSAT = 0
 countUNSAT = 0
+
+# Le N-paramètre pour NkColor ou NClique
 N = 3
-name = "ressources/graph9.g6.txt"
-with open(name, "r", encoding="utf-8") as f:
+# Le nom du fichier dans le dossier ressources
+name = "graph9.g6.txt"
+with open("ressources/" + name, "r", encoding="utf-8") as f:
     nb_lignes = sum(1 for _ in f)
 
 count = 0
 
-with open(name, "r", encoding="utf-8") as f:
+with open("ressources/" + name, "r", encoding="utf-8") as f:
     for ligne in f:
         # 1044 graphes
 
@@ -44,4 +46,3 @@ with open(name, "r", encoding="utf-8") as f:
 
 print("Nombre de probleme SAT : " + str(countSAT))
 print("Nombre de probleme UNSAT : " + str(countUNSAT))
-
