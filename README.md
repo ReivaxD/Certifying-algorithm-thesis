@@ -18,4 +18,6 @@ Les fichiers présent dans le dossier CertifyingAlgo sont le coeur du code :
 
 - SATChecker se charge de vérifier si une assignation de valeurs est solution d'un problème donné. Il s'occupe également de fournir une preuve DRAT si aucune solution n'est possible.
 
+ExempleNetworkX utilise un code en format graph6 pour générer un graphe et utilise l'algorithme KColor dessus
+
 Les deux fichiers .txt sont des exemple de preuve DRAT fournie par les algorithmes.
