@@ -17,16 +17,15 @@ sat, model = solver.solve()
 
 if(sat):
     print(" Le probleme est resolvable" )
+    print("Assignation possible :", model)
+
+    print("Signification :")
+
+    i = 1
+    for x in range(vertex):
+        for y in range(N):
+            if(model[i] == True):
+                print("Le sommet " + str(x+1) + " a la position dans la clique " + str(y+1) + " attribuee")
+            i += 1
 else:
     print(" Le probleme n'est pas resolvable" )
-
-print("Assignation possible :", model)
-
-print("Signification :")
-
-i = 1
-for x in range(vertex):
-    for y in range(N):
-        if(model[i] == True):
-            print("Le sommet " + str(x+1) + " a la position dans la clique " + str(y+1) + " attribuee")
-        i += 1

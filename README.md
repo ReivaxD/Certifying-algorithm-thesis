@@ -1,6 +1,6 @@
 # Certifying-algorithm-thesis
 
-librairies importantes : glocose3, networkX
+librairies importantes : glocose3, networkX, pysat
 
 Les fichiers expérimentaux implémentant les différentes partie d'un Algorithme Certifiant sont les fichiers commencant par "Exemple" :
 
@@ -9,6 +9,8 @@ Les fichiers expérimentaux implémentant les différentes partie d'un Algorithm
 - ExempleSAT pour vérifier si un modèle donné est solution d'un problème.
 
 - ExempleUNSAT pour créer une preuve DRAT lorsqu'un problème ne possède pas de solutions.
+
+Note : Les testeurs SAT et UNSAT ne fonctionnent pas sur windown et mac.
 
 Les fichiers présent dans le dossier CertifyingAlgo sont le coeur du code :
 

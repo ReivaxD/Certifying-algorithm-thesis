@@ -61,38 +61,66 @@ class CDCLSolver:
                     return lit
         return None
 
-    # Traite les causes du conflit et la position pour revenir en arriere avec le backtracking
     def analyze_conflict(self, conflict_clause):
-        learnt = conflict_clause[:]
+        # On fusionne itérativement la clause courante avec la clause "reason" du littéral responsable du conflit
+        # en éliminant ce littéral (le pivot). 
+        # On s'arrête quand la clause est dite "assertive" : elle ne contient plus qu'un seul littéral du niveau
+        # de décision courant, ce qui garantit qu'après backjump ce littéral sera propagé immédiatement par la propagation unitaire.
+
+        learnt = set(conflict_clause)
+
+        # Mémorise les pivots déjà utilisés pour éviter de résoudre deux fois
+        # sur la même variable, ce qui causerait un cycle infini.
+        seen_pivots = set()
+
         while True:
-        # Crée une clause pour traiter le conflit
-            # Combien de littéraux de la clause viennent du niveau de décision courant
+            # Littéraux de la clause courante assignés au niveau de décision actuel.
+            # Ce sont les seuls candidats au rôle de pivot.
             current_level_lits = [
                 l for l in learnt
                 if self.level.get(abs(l), -1) == self.decision_level
             ]
-            # La clause est (supposée) assertive (1 seul littéral -> on sait qu'on doit ajouter une clause et faire du backtracking)
+
+            # Condition d'arrêt : clause assertive.
+            # Un seul littéral du niveau courant implique qu'après backjump, ce littéral
+            # sera l'unique littéral non assigné de la clause et sera propagé.
             if len(current_level_lits) <= 1:
                 break
 
-            # On remonte au littéral de base pour savoir la cause de la présence 
-            lit = current_level_lits[0]
-            reason = self.reason.get(abs(lit))
-            # On ne peut pas remonter plus loin
-            if reason is None:
-                break
-            # Si aucun des sénarios précédents on combine la clause courante avec la clause reason
-            # (learnt + reason) combine l'ensemble des littéraux courants et ceux qui ont causés le conflit (+ supprime les doublons)
-            # - {lit, -lit} retire le littéral concerné et son opposé (On élimine le pivot (= littéral responsable du conflit))
-            # Note importante ici : ligne pas complete (TODO)
-            learnt = list(set(learnt + reason) - {lit, -lit})
+            # Sélection du pivot : littéral du niveau courant le plus récemment
+            # assigné (ordre chronologique inverse), avec une reason connue.
+            # L'ordre chronologique inverse garantit la convergence : on "défait"
+            # les implications dans l'ordre inverse de leur création.
+            pivot = max(
+                (l for l in current_level_lits
+                if self.reason.get(abs(l)) is not None and abs(l) not in seen_pivots),
+                key=lambda l: list(self.assignment.keys()).index(abs(l)),
+                default=None
+            )
 
-        # Cherche la position pour le backtracking
+            # Aucun pivot exploitable implique qu'on ne peut pas réduire davantage.
+            if pivot is None:
+                break
+
+            seen_pivots.add(abs(pivot))
+
+            # Étape de résolution :
+            # learnt  = (learnt ∪ reason(pivot)) \ {pivot, ¬pivot}
+            # On fusionne les deux clauses et on supprime le pivot des deux côtés
+            # (littéral positif et négatif) pour l'éliminer proprement.
+            reason = self.reason[abs(pivot)]
+            learnt = (learnt | set(reason)) - {pivot, -pivot}
+
+        learnt = list(learnt)
+
+        # Calcul du niveau de backjump : on cherche le niveau le plus élevé
+        # parmi les littéraux de la clause apprise qui ne sont PAS du niveau
+        # courant. C'est le niveau auquel la clause deviendra unitaire
+        # (un seul littéral non assigné) et déclenchera une propagation.
         backjump = 0
         for lit in learnt:
             lvl = self.level.get(abs(lit), 0)
             if lvl != self.decision_level:
-                # le niveau où la clause apprise deviendra unitaire (la dernière)
                 backjump = max(backjump, lvl)
 
         return learnt, backjump

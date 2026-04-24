@@ -65,12 +65,3 @@ def hamiltontoClause(edge, vertex):
                     clauses.append([-varList[y][vertex-1], -varList[x][0]])
 
     return clauses
-
-# exemple du mémoire :
-
-# le format : le nombre de sommets
-vertex = 5
-# un tableau R x R contenant un 1 si deux sommets sont connectés (0 sinon) (diagonale pas importante)
-edge = [[1, 1, 1, 0, 1], [1, 1, 1, 0, 0], [1, 1, 1, 1, 1], [0, 0, 1, 1, 1], [1, 0, 1, 1, 1]]
-
-# print(hamiltontoClause(edge, vertex))

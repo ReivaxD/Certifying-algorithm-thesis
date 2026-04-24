@@ -27,25 +27,10 @@ def colorNktoClause(edge, vertex, N):
     # la condition if élimine les doublons ("deux aretes" existent connectant les sommets A et B : AB et BA)
     # on ajoute les couple qui ne peuvent pas avoir la meme couleur pour une arête AB : [non A1 ou non B1] et [non A2 ou non B2]
     for x in range(vertex):
-            for y in range(vertex):
+            for y in range(x+1, vertex):
                  if(edge[x][y] == 1) and (x != y):
                         for i in range(N):
                             if [-var[y][i], -var[x][i]] not in clauses:
                                 clauses.append([-var[x][i], -var[y][i]])
 
     return clauses
-
-# exemple du mémoire :
-
-# le format : le nombre de sommets
-
-# graphe 4-coloriable
-N = 4
-
-# nombre de sommets
-vertex = 5
-
-# un tableau R x R contenant un 1 si deux sommets sont connectés (0 sinon) (0 sur la diagonale un sommet A est considéré non connecté à lui même pour simplifier le code)
-edge = [[1, 1, 1, 0, 1], [1, 1, 0, 0, 0], [1, 0, 1, 0, 0], [0, 0, 0, 1, 1], [1, 0, 0, 1, 1]]
-
-# print(colorNktoClause(edge, vertex, N))
