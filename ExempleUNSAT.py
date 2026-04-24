@@ -3,11 +3,11 @@ from CertifyingAlgo.hamilton import hamiltontoClause
 
 print("Est ce que mon assignation de variable est solution du problème du cycle Hamiltonien?")
 
-print("Le sommet 1 a la position dans le cycle 5 attribuée")
-print("Le sommet 2 a la position dans le cycle 4 attribuée")
-print("Le sommet 3 a la position dans le cycle 1 attribuée")
-print("Le sommet 4 a la position dans le cycle 2 attribuée")
-print("Le sommet 5 a la position dans le cycle 3 attribuée")
+print("Le sommet 1 a la position dans le cycle 5 attribuee")
+print("Le sommet 2 a la position dans le cycle 4 attribuee")
+print("Le sommet 3 a la position dans le cycle 1 attribuee")
+print("Le sommet 4 a la position dans le cycle 2 attribuee")
+print("Le sommet 5 a la position dans le cycle 3 attribuee")
 
 
 # nombre de sommets
@@ -23,6 +23,6 @@ print(clauses)
 nameProof = "dratProof_test"
 
 if resolveUNSAT(clauses, nameProof):
-    print("L'assignation de variable est solution du problème")
+    print("L'assignation de variable est solution du probleme")
 else:
-    print("L'assignation de variable n'est pas solution du problème")
+    print("L'assignation de variable n'est pas solution du probleme")

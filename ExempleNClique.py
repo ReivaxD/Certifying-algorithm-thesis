@@ -16,9 +16,9 @@ solver = CDCLSolver(clause)
 sat, model = solver.solve()
 
 if(sat):
-    print(" Le problème est résolvable" )
+    print(" Le probleme est resolvable" )
 else:
-    print(" Le problème n'est pas résolvable" )
+    print(" Le probleme n'est pas resolvable" )
 
 print("Assignation possible :", model)
 
@@ -28,5 +28,5 @@ i = 1
 for x in range(vertex):
     for y in range(N):
         if(model[i] == True):
-            print("Le sommet " + str(x+1) + " a la position dans la clique " + str(y+1) + " attribuée")
+            print("Le sommet " + str(x+1) + " a la position dans la clique " + str(y+1) + " attribuee")
         i += 1
