@@ -1,14 +1,7 @@
 from CertifyingAlgo.SATChecker import resolveSAT, resolveUNSAT
 from CertifyingAlgo.hamilton import hamiltontoClause
 
-print("Est ce que mon assignation de variable est solution du problème du cycle Hamiltonien?")
-
-print("Le sommet 1 a la position dans le cycle 5 attribuee")
-print("Le sommet 2 a la position dans le cycle 4 attribuee")
-print("Le sommet 3 a la position dans le cycle 1 attribuee")
-print("Le sommet 4 a la position dans le cycle 2 attribuee")
-print("Le sommet 5 a la position dans le cycle 3 attribuee")
-
+print("Est ce qu'il existe une assignation de variable solution du problème du cycle Hamiltonien?")
 
 # nombre de sommets
 vertex = 5
