@@ -6,7 +6,7 @@ countUNSAT = 0
 
 # Le K pour K-coloring
 K = 2
-name = "graph10.g6"
+name = "graph9.g6"
 
 
 def is_k_colorable(G: nx.Graph, k: int) -> bool:
