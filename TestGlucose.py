@@ -1,9 +1,10 @@
 import networkx as nx
 import time
-from CertifyingAlgo.CDCLSolver import CDCLSolver
 from CertifyingAlgo.NkColor import colorNktoClause
 from CertifyingAlgo.hamilton import hamiltontoClause
 from CertifyingAlgo.NClique import cliqueNtoClause
+from pysat.solvers import Glucose3
+
 # Donne le format utilisé par les différents codes pour les arêtes
 def toEdges(vertex, edges):
     tab = [[0 for _ in range(vertex)] for _ in range(vertex)]
@@ -15,10 +16,11 @@ def toEdges(vertex, edges):
 countSAT = 0
 countUNSAT = 0
 
+
 # Le N-paramètre pour NkColor ou NClique
-N = 3
+N = 4
 # Le nom du fichier dans le dossier ressources
-name = "graph9.g6.txt"
+name = "graph7.g6.txt"
 with open("ressources/" + name, "r", encoding="utf-8") as f:
     nb_lignes = sum(1 for _ in f)
 
@@ -33,10 +35,12 @@ with open("ressources/" + name, "r", encoding="utf-8") as f:
         vertex = g.number_of_nodes()
         edge = toEdges(vertex, g.edges())
 
-        clause = colorNktoClause(edge, vertex, N)
-        solver = CDCLSolver(clause)
-        sat = solver.solve()
+        clause = cliqueNtoClause(edge, vertex, N)
 
+        solver = Glucose3()
+        for c in clause:
+            solver.add_clause(c)
+        sat = solver.solve()
         if(sat):
             countSAT += 1
         else:
