@@ -52,16 +52,13 @@ def hamiltontoClause(edge, vertex):
     # (en excluant la diagonale)
     # pour une arête manquante X-Y
     # on empèche les position se suivant (a et a+1)
-    # on crée une dernière position bloquée pour la position en tête de cycle et en fin de cycle
-    # on répète le processus pour l'arête Y-X (car sens du chemin important pour problème cycle hamiltonien)
+    # on répète le processus pour l'arête Y-X (car sens du chemin important pour problème chemin hamiltonien)
     for x in range(vertex):
         for y in range(vertex):
             if(edge[x][y] == 0) and (x != y):
                     for a in range(vertex-1):
                         clauses.append([-varList[x][a], -varList[y][a+1]])
-                    clauses.append([-varList[x][vertex-1], -varList[y][0]])
                     for b in range(vertex-1):
                         clauses.append([-varList[y][b], -varList[x][b+1]])
-                    clauses.append([-varList[y][vertex-1], -varList[x][0]])
 
     return clauses
