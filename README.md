@@ -27,3 +27,5 @@ ExempleNetworkX utilise un code en format graph6 pour générer un graphe et uti
 - TestGraphes Utilise le même principe de TestOneGraph sur des grandes bases de données de graphes
 
 Les deux fichiers .txt sont des exemple de preuve DRAT fournie par les algorithmes.
+
+- TestKColor prend des temps et des résultats en se servant d'un algorithme prévu à cet effet utilisant le backtracking
