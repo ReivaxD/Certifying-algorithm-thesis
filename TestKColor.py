@@ -20,7 +20,7 @@ name = "graph6.g6.txt"
 #       return True
 #   return False
 #
-# Il crée un arbre de recherche et vite les noeuds jusqu'a ce que nodes soit vide.
+# Il crée un arbre de recherche et parcourt les noeuds de l'arbre jusqu'à ce que nodes soit vide.
 # Ce code ne fait pas partie des notions sur les algorithmes certifiants 
 # mais ils permettent une comparaison avec eux. 
 # SOURCES :
