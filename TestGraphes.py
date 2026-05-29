@@ -18,7 +18,7 @@ countUNSAT = 0
 # Le N-paramètre pour NkColor ou NClique
 N = 3
 # Le nom du fichier dans le dossier ressources
-name = "graph9.g6.txt"
+name = "graph7.g6.txt"
 with open("ressources/" + name, "r", encoding="utf-8") as f:
     nb_lignes = sum(1 for _ in f)
 
@@ -37,7 +37,7 @@ with open("ressources/" + name, "r", encoding="utf-8") as f:
         solver = CDCLSolver(clause)
         sat = solver.solve()
 
-        if(sat):
+        if(sat[0]):
             countSAT += 1
         else:
             countUNSAT += 1

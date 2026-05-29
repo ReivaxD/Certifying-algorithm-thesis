@@ -1,5 +1,7 @@
 from pysat.solvers import Glucose3
 
+
+# Vérifie si un modèle est solution d'un problème SAT
 def resolveSAT(clauses, model):
     for clause in clauses:
         if not(checkClause(clause, model)):
@@ -8,6 +10,7 @@ def resolveSAT(clauses, model):
     print("SAT")
     return True
 
+# Vérifie si une clause est vraie ou fausse
 def checkClause(clause, model):
     for l in clause:
         if l > 0:
@@ -20,6 +23,7 @@ def checkClause(clause, model):
     print(clause)
     return False
 
+# Génrère une preuve UNSAT et la met dans un fichier au format "name.txt"
 def resolveUNSAT(clauses, name):
     with Glucose3(with_proof=True) as solver:
         for clause in clauses:
