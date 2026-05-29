@@ -1,7 +1,7 @@
 from CertifyingAlgo.CDCLSolver import CDCLSolver
 from CertifyingAlgo.NClique import cliqueNtoClause
 
-# graphe 4-coloriable
+# graphe N-coloriable
 N = 3
 
 # nombre de sommets

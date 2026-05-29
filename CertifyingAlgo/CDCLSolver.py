@@ -1,3 +1,10 @@
+# IMPORTANT :
+# Cette classe est la seule à avoir été réalisée avec assistance d'une intelligence artificielle
+# il s'agit de Claude IA et à été utilisée de deux façons différentes. 
+# D'une part au début du projet pour avoir un squelette des fonctions "analyze_conflict" et "solve". 
+# Celles-ci étant très complexes, je ne voulais pas oublier de notions essentielles dans leur conception.
+# D'une seconde part pour faire de la correction de bug.
+
 class CDCLSolver:
     def __init__(self, clauses):
         self.clauses = clauses[:]

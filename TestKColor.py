@@ -6,10 +6,28 @@ countUNSAT = 0
 
 # Le K pour K-coloring
 K = 2
-name = "graph9.g6"
+name = "graph6.g6.txt"
 
 
-def is_k_colorable(G: nx.Graph, k: int) -> bool:
+# Fonction générique pour rechercher si un graphe est coloriable avec K couleurs en utilisant le backtracking
+# Voici son pseudo code :
+#
+# function backtrack(s,d):
+#   if isSolution(s):
+#       return True
+#   for n in nextSituations(s):
+#   if backtrack(n,d+1):
+#       return True
+#   return False
+#
+# Il crée un arbre de recherche et vite les noeuds jusqu'a ce que nodes soit vide.
+# Ce code ne fait pas partie des notions sur les algorithmes certifiants 
+# mais ils permettent une comparaison avec eux. 
+# SOURCES :
+# https://studylibfr.com/doc/3547785/coloration-de-graphe---algorithme-glouton
+# Cours de "graphes et IA" de la faculté des sciences (chapitre 2)
+
+def is_k_colorable(G: nx.Graph, k: int):
     if k >= G.number_of_nodes():
         return True
 

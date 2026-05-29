@@ -1,7 +1,7 @@
 from CertifyingAlgo.CDCLSolver import CDCLSolver
 from CertifyingAlgo.NkColor import colorNktoClause
 
-# graphe 4-coloriable
+# graphe N-coloriable
 N = 4
 
 # nombre de sommets
