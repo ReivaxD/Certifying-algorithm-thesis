@@ -18,7 +18,7 @@ countUNSAT = 0
 
 
 # Le N-paramètre pour NkColor ou NClique
-N = 4
+N = 2
 # Le nom du fichier dans le dossier ressources
 name = "graph7.g6.txt"
 with open("ressources/" + name, "r", encoding="utf-8") as f:
@@ -35,7 +35,7 @@ with open("ressources/" + name, "r", encoding="utf-8") as f:
         vertex = g.number_of_nodes()
         edge = toEdges(vertex, g.edges())
 
-        clause = cliqueNtoClause(edge, vertex, N)
+        clause = colorNktoClause(edge, vertex, N)
 
         solver = Glucose3()
         for c in clause:
