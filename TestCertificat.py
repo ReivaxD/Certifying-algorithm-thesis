@@ -27,7 +27,8 @@ with open("ressources/" + name, "r", encoding="utf-8") as f:
 
 count = 0
 cdcl_time = 0.0
-cert_time = 0.0
+cert_time_sat = 0.0
+cert_time_unsat = 0.0
 
 start = time.time()
 
@@ -50,7 +51,7 @@ with open("ressources/" + name, "r", encoding="utf-8") as f:
 
             t1 = time.time()
             ok = resolveSAT(clause, model)
-            cert_time += time.time() - t1
+            cert_time_sat += time.time() - t1
 
             if ok:
                 countSATVerified += 1
@@ -61,7 +62,7 @@ with open("ressources/" + name, "r", encoding="utf-8") as f:
 
             t1 = time.time()
             verified = resolveUNSAT(clause, name + "_" + str(count))
-            cert_time += time.time() - t1
+            cert_time_unsat += time.time() - t1
 
             if verified:
                 countVerified += 1
@@ -73,6 +74,7 @@ with open("ressources/" + name, "r", encoding="utf-8") as f:
             print(str(count) + "/" + str(nb_lignes))
 
 end = time.time()
+cert_time = cert_time_sat + cert_time_unsat
 
 print("Nombre de probleme SAT : " + str(countSAT))
 print("  dont modeles verifies    : " + str(countSATVerified))
@@ -82,5 +84,7 @@ print("  dont preuves vérifiées   : " + str(countVerified))
 print("  dont preuves NON vérifiées : " + str(countUnverified))
 print("Temps total :" + str(end - start) + "secondes")
 print("  dont temps CDCL         : " + str(cdcl_time) + "secondes")
-print("  dont temps certification: " + str(cert_time) + "secondes")
+print("  dont temps certification (total): " + str(cert_time) + "secondes")
+print("    dont certification SAT  : " + str(cert_time_sat) + "secondes")
+print("    dont certification UNSAT: " + str(cert_time_unsat) + "secondes")
 print("  dont temps overhead (I/O, boucle, etc.) : " + str((end - start) - cdcl_time - cert_time) + "secondes")
