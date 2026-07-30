@@ -29,3 +29,5 @@ ExempleNetworkX utilise un code en format graph6 pour générer un graphe et uti
 Les deux fichiers .txt sont des exemple de preuve DRAT fournie par les algorithmes.
 
 - TestKColor prend des temps et des résultats en se servant d'un algorithme prévu à cet effet utilisant le backtracking
+
+Le fichier TestCertificat récupère les temps produit par l'algorithme CDCL et par le checker Drat-trim 

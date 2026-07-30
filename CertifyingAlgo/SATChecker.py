@@ -41,10 +41,12 @@ def resolveUNSAT(clauses, name=None, timeout=60, tmp_dir="/dev/shm"):
                 return None
             proof = solver.get_proof()
 
+        # On sauvegarde la preuve produite par le solveur
         with open(drat_path, "w") as f:
             for step in proof:
                 f.write(step + "\n")
 
+        # On utilise drat-trim pour vérifier le certificat
         result = subprocess.run(
             ["drat-trim", cnf_path, drat_path, "-t", str(timeout)],
             capture_output=True, text=True, timeout=timeout + 5
